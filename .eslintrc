@@ -1,0 +1,31 @@
+{
+  "extends": [ "airbnb-base" ],
+  "env": {
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+  },
+  "globals": { },
+  "rules": {
+    "no-mixed-operators": 0,
+    "no-param-reassign": 0,
+    "func-names": 0,
+    "object-shorthand": 0,
+    "no-underscore-dangle": 0,
+    "comma-dangle": 0,
+    "keyword-spacing": ["error", { "overrides": {
+      "if": { "after": false },
+      "for": { "after": false },
+      "while": { "after": false }
+      }
+    }],
+    "space-before-function-paren": 0,
+    "strict": 0,
+    "indent": ["error", 2, {"MemberExpression": 0}],
+    "max-len": ["error", 120],
+    "no-unused-expressions": ["error", { "allowTernary": true }],
+  }
+}

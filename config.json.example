@@ -1,0 +1,12 @@
+[
+  {
+    "queue": "EchoQueue",
+    "namespace": "default",
+    "targetKind": "Deployment",
+    "targetName": "echo-node",
+    "minCount": 1,
+    "maxCount": 10,
+    "maxNew": 5,
+    "interval": 10
+  }
+]

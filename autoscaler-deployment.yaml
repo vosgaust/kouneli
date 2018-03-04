@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: amqp-autoscaler
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: amqp-autoscaler
+    spec:
+      containers:
+      - name: autoscaler
+        image: kouneli
+        imagePullPolicy: Never
+        env:
+        - name: INCLUSTER
+          value: "true"
+        - name: KUBERNETES_RABBITMQ_SERVICE_NAME
+          value: RABBITMQ_BROKER
+        - name: CONFIG
+          value: >
+            EchoQueue|1|10|5|10|default|Deployment|echo-node
