@@ -1,32 +1,10 @@
 const RabbitManager = require('./lib/RabbitManager');
 const Scaler = require('./lib/Scaler');
-const KubeApi = require('kubernetes-client');
+const Kube = require('./lib/Kube');
 const winston = require('winston');
-const fs = require('fs');
+const ConfigManager = require('./lib/ConfigManager');
 
-const CONFIG_FILE = './config.json';
-
-let config = [];
-if(fs.existsSync(CONFIG_FILE)) {
-  config = config.concat(JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8')));
-}
-
-if(process.env.CONFIG) {
-  const extraConfig = process.env.CONFIG.split(';').map((queueConfig) => {
-    const parameters = queueConfig.trim().split('|');
-    return {
-      queue: parameters[0],
-      minCount: parameters[1],
-      maxCount: parameters[2],
-      maxNew: parameters[3],
-      interval: parameters[4],
-      namespace: parameters[5],
-      targetKind: parameters[6],
-      targetName: parameters[7]
-    };
-  });
-  config = config.concat(extraConfig);
-}
+const config = ConfigManager.getConfig();
 
 const logger = winston.createLogger({
   transports: [
@@ -34,16 +12,6 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: 'combined.log' })
   ]
 });
-
-let kubeConfig;
-if(process.env.INCLUSTER) {
-  kubeConfig = KubeApi.config.getInCluster();
-} else {
-  kubeConfig = KubeApi.config.fromKubeconfig();
-}
-Object.assign(kubeConfig, { promises: true });
-
-const kube = new KubeApi.Extensions(kubeConfig);
 
 const k8sRabbitServiceName = process.env.KUBERNETES_RABBITMQ_SERVICE_NAME;
 let rabbitHost = 'localhost';
@@ -59,6 +27,12 @@ const rabbitManager = new RabbitManager({
 });
 
 config.forEach((scaleConfig) => {
+  const kube = new Kube({
+    namespace: scaleConfig.namespace,
+    target: scaleConfig.targetName,
+    kind: scaleConfig.targetKind,
+    incluster: process.env.INCLUSTER
+  });
   const scaler = new Scaler(scaleConfig, rabbitManager, kube, logger);
   scaler.monitor();
 });
