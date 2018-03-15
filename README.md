@@ -1,4 +1,5 @@
 # kouneli
+[![Build Status](https://travis-ci.org/vosgaust/kouneli.svg?branch=master)](https://travis-ci.org/vosgaust/kouneli)
 Kubernetes autoscaler based on rabbit queue length written in node.
 
 ### Configuration
