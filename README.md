@@ -1,5 +1,7 @@
 # kouneli
 [![Build Status](https://travis-ci.org/vosgaust/kouneli.svg?branch=master)](https://travis-ci.org/vosgaust/kouneli)
+[![Coverage Status](https://coveralls.io/repos/github/vosgaust/kouneli/badge.svg?branch=master)](https://coveralls.io/github/vosgaust/kouneli?branch=master)
+
 Kubernetes autoscaler based on rabbit queue length written in node.
 
 ### Configuration
