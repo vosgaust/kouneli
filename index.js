@@ -5,7 +5,6 @@ const winston = require('winston');
 const ConfigManager = require('./lib/ConfigManager');
 
 const config = ConfigManager.getConfig();
-
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),

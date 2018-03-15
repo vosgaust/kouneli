@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
     "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-config-xo-space": "^0.16.0",
-    "eslint-plugin-import": "^2.3.0"
+    "eslint-plugin-import": "^2.3.0",
+    "jest": "^22.4.2"
   },
   "author": "edugar91@gmail.com",
   "license": "MIT",
