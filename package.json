@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage"
+    "test": "eslint *.js lib/** test/** && jest --coverage",
+    "coveralls": "cat ./node_modules/.cache/jestCoverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
