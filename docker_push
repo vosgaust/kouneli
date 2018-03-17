@@ -1,4 +1,5 @@
 #!/bin/bash
+export
 export REPO=godraude/kouneli
 export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
