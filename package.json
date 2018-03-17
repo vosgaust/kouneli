@@ -1,10 +1,11 @@
 {
   "name": "kouneli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Kubernetes scaler based on amqp queue length",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "release": "standard-version",
     "test": "eslint *.js lib/** test/** && jest --coverage",
     "coveralls": "cat ./node_modules/.cache/jestCoverage/lcov.info | coveralls"
   },
@@ -30,7 +31,8 @@
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-config-xo-space": "^0.16.0",
     "eslint-plugin-import": "^2.3.0",
-    "jest": "^22.4.2"
+    "jest": "^22.4.2",
+    "standard-version": "^4.3.0"
   },
   "author": "edugar91@gmail.com",
   "license": "MIT",
