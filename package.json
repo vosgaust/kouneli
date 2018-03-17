@@ -1,6 +1,6 @@
 {
   "name": "kouneli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Kubernetes scaler based on amqp queue length",
   "main": "kouneli.js",
   "scripts": {
