@@ -1,6 +1,6 @@
 #!/bin/bash
 export REPO=godraude/kouneli
-export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+export TAG=`if [ "$BRANCH" == "master" ]; then echo "latest"; else echo $BRANCH ; fi`
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 docker build -t $REPO:$COMMIT .
 docker tag $REPO:$COMMIT $REPO:$TAG
