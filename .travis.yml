@@ -17,4 +17,7 @@ services:
   - docker
 deploy:
   provider: script
+  on:
+    all_branches: true
+    tags: true
   script: bash docker_push
